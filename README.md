@@ -1,4 +1,4 @@
-## P-CNN: Privacy-Preserving Convolutional neural network model
+## P-CNN: Privacy-Preserving Convolutional Neural Network
 
 #### Paper: Edge-Assisted Privacy-preserving Raw Data Sharing Framework for Connected Autonomous Vehicles
 文章链接地址：  
