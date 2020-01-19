@@ -1,0 +1,23 @@
+input:"relu2_2_1"
+input_dim:1
+input_dim:128
+input_dim:112
+input_dim:112
+
+input:"relu2_2_2"
+input_dim:1
+input_dim:128
+input_dim:112
+input_dim:112
+
+layer {
+  name: "pool2"
+  type: "Python"
+  bottom: "relu2_2_1"
+  bottom: "relu2_2_2"
+  top: "pool2_2"
+  python_param {
+    module: "layer"
+    layer: "MaxBLayer"    #原图，池化层
+  }
+}

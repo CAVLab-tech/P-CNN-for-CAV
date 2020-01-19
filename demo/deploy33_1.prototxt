@@ -1,0 +1,23 @@
+input:"fc6_1"
+input_dim:1
+input_dim:4096 #输入通道数
+input_dim:1
+input_dim:1
+
+input:"fc6_2"
+input_dim:1
+input_dim:4096 #输入通道数
+input_dim:1
+input_dim:1
+
+layer {
+  name: "relu6"
+  type: "Python"
+  bottom: "fc6_1"
+  bottom: "fc6_2"
+  top: "relu6_1"
+  python_param {
+    module: "layer"
+    layer: "ReluALayer"   #原图，激活函数
+  }
+}

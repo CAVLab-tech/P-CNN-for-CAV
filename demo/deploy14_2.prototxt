@@ -1,0 +1,23 @@
+input:"conv3_2_1"
+input_dim:1
+input_dim:256  #输入通道数
+input_dim:56
+input_dim:56
+
+input:"conv3_2_2"
+input_dim:1
+input_dim:256  #输入通道数
+input_dim:56
+input_dim:56
+
+layer {
+  name: "relu3_2"
+  type: "Python"
+  bottom: "conv3_2_1"
+  bottom: "conv3_2_2"
+  top: "relu3_2_2"
+  python_param {
+    module: "layer"
+    layer: "ReluBLayer"   #原图，激活函数
+  }
+}

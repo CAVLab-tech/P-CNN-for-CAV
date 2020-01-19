@@ -1,0 +1,25 @@
+input:"relu4_1"
+input_dim:1
+input_dim:512
+input_dim:28
+input_dim:28
+layer {
+  name: "conv4_2"
+  type: "Convolution"
+  bottom: "relu4_1"
+  top: "conv4_2"
+
+  convolution_param {
+    num_output: 512
+    kernel_size: 3
+    pad: 1
+    stride: 1
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+input:"pool5_2"
+input_dim:1
+input_dim:512
+input_dim:7
+input_dim:7
+layer {
+  name: "fc6"
+  type: "InnerProduct"
+  bottom: "pool5_2"
+  top: "fc6_2"
+  inner_product_param {
+    num_output: 4096  #输出神经元个数
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+    }
+  }
+}

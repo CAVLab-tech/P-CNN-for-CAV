@@ -1,0 +1,16 @@
+input:"fc7"
+input_dim:1
+input_dim:4096 #输入通道数
+input_dim:1
+input_dim:1
+
+layer {
+  name: "relu7"
+  type: "Python"
+  bottom: "fc7"
+  top: "relu7"
+  python_param {
+    module: "layer"
+    layer: "ReluELayer"   #原图，激活函数
+  }
+}

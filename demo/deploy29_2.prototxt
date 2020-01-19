@@ -1,0 +1,25 @@
+input:"relu5_2_2"
+input_dim:1
+input_dim:512
+input_dim:14
+input_dim:14
+layer {
+  name: "conv5_3"
+  type: "Convolution"
+  bottom: "relu5_2_2"
+  top: "conv5_3_2"
+
+  convolution_param {
+    num_output: 512
+    kernel_size: 3
+    pad: 1
+    stride: 1
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+    }
+  }
+}

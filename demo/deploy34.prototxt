@@ -1,0 +1,21 @@
+input:"relu6"
+input_dim:1
+input_dim:4096
+input_dim:1
+input_dim:1
+layer {
+  name: "fc7"
+  type: "InnerProduct"
+  bottom: "relu6"
+  top: "fc7"
+  inner_product_param {
+    num_output: 4096  #输出神经元个数
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+    }
+  }
+}

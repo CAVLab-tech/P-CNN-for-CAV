@@ -1,0 +1,23 @@
+input:"relu5_3_1"
+input_dim:1
+input_dim:512
+input_dim:14
+input_dim:14
+
+input:"relu5_3_2"
+input_dim:1
+input_dim:512
+input_dim:14
+input_dim:14
+
+layer {
+  name: "pool5"
+  type: "Python"
+  bottom: "relu5_3_1"
+  bottom: "relu5_3_2"
+  top: "pool5_1"
+  python_param {
+    module: "layer"
+    layer: "MaxALayer"    #原图，池化层
+  }
+}

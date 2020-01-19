@@ -1,0 +1,24 @@
+input:"data2"
+input_dim:1
+input_dim:3   #RGB
+input_dim:224  #图片维度224×224×3
+input_dim:224
+layer {
+  name: "conv1_1"
+  type: "Convolution"
+  bottom: "data2"
+  top: "conv1_1_2"
+
+  convolution_param {
+    num_output: 64  #卷积核个数
+    kernel_size: 3  #卷积核尺寸：3×3×3
+    pad: 1   #补一层零，卷积后维度不变
+    stride: 1  #步长
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+
+
+  }
+}

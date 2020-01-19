@@ -1,0 +1,8 @@
+#!/bin/env sh
+
+TOOLS=/home/cqx/caffe/build/tools
+
+$TOOLS/caffe train \
+  -solver=models/VGGnet/solver.prototxt \
+  #-weights=models/VGGnet/VGGnet.caffemodel 
+  -snapshot=models/VGGnet/vggnet_train_iter_400.solverstate

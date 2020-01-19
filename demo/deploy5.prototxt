@@ -1,0 +1,19 @@
+input:"relu1_2"
+input_dim:1
+input_dim:64
+input_dim:224
+input_dim:224
+
+
+
+layer {
+  name: "pool1"
+  type: "Python"
+  bottom: "relu1_2"
+  top: "pool1"
+  python_param {
+    module: "layer"
+    layer: "MaxCLayer"    #原图，池化层
+  }
+}
+

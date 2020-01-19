@@ -1,0 +1,21 @@
+input:"relu7"
+input_dim:1
+input_dim:4096
+input_dim:1
+input_dim:1
+layer {
+  name: "re_fc8"
+  type: "InnerProduct"
+  bottom: "relu7"
+  top: "score"
+  inner_product_param {
+    num_output: 2  #二分类
+    weight_filler {
+      type: "gaussian"
+     std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+    }
+   }
+}

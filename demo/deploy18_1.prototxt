@@ -1,0 +1,25 @@
+input:"pool3_1"
+input_dim:1
+input_dim:256
+input_dim:28
+input_dim:28
+layer {
+  name: "conv4_1"
+  type: "Convolution"
+  bottom: "pool3_1"
+  top: "conv4_1_1"
+
+  convolution_param {
+    num_output: 512
+    kernel_size: 3
+    pad: 1
+    stride: 1
+    weight_filler {
+      type: "gaussian"
+      std: 0.01
+    }
+    bias_filler {
+      type: "constant"
+    }
+  }
+}

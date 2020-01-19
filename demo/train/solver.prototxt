@@ -1,0 +1,14 @@
+net: "models/VGGnet/train_val.prototxt"
+test_iter: 107
+test_interval: 10
+base_lr: 0.0001
+lr_policy: "step"
+gamma: 0.1
+stepsize: 500
+display: 10
+max_iter: 450
+momentum: 0.9
+weight_decay: 0.0005
+snapshot: 50
+snapshot_prefix: "models/VGGnet/vggnet_train"
+solver_mode: CPU

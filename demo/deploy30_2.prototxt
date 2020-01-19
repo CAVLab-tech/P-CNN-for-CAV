@@ -1,0 +1,23 @@
+input:"conv5_3_1"
+input_dim:1
+input_dim:512 #输入通道数
+input_dim:14
+input_dim:14
+
+input:"conv5_3_2"
+input_dim:1
+input_dim:512 #输入通道数
+input_dim:14
+input_dim:14
+
+layer {
+  name: "relu5_3"
+  type: "Python"
+  bottom: "conv5_3_1"
+  bottom: "conv5_3_2"
+  top: "relu5_3_2"
+  python_param {
+    module: "layer"
+    layer: "ReluBLayer"   
+  }
+}
