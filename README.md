@@ -3,7 +3,7 @@
 #### Paper: Edge-Assisted Privacy-preserving Raw Data Sharing Framework for Connected Autonomous Vehicles
 文章链接地址：  
 &emsp;&emsp;如果您发现本文工作对您有帮助，请考虑引用（参考文献格式）。  
-&emsp;&emsp;本文旨在为成熟的大型CNN网络模型（VGG-16）提供安全版本P-CNN，实验表明，P-CNN可以安全正确地实现二分类任务，误差可控制在约1e^-6量级。  
+&emsp;&emsp;本文旨在为成熟的大型CNN网络模型（VGG-16）提供安全版本P-CNN，实验表明，P-CNN可以安全正确地实现二分类任务，误差可控制在约1e^-4量级。  
 &emsp;&emsp;如果您想复现本文工作，请认真阅读：<https://www.mdeditor.com>;。 
 
 &emsp;&emsp;总结地，包含下述内容：  
