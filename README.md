@@ -1,10 +1,11 @@
 ## P-CNN: Privacy-Preserving Convolutional Neural Network
 
 #### Paper: Edge-Assisted Privacy-preserving Raw Data Sharing Framework for Connected Autonomous Vehicles
-文章链接地址：  
-&emsp;&emsp;如果您发现本文工作对您有帮助，请考虑引用（参考文献格式）。  
-&emsp;&emsp;本文旨在为成熟的大型CNN网络模型（VGG-16）提供安全版本P-CNN，实验表明，P-CNN可以安全正确地实现二分类任务，误差可控制在约1e^-4量级。  
-&emsp;&emsp;如果您想复现本文工作，请认真阅读：<https://www.mdeditor.com>;。 
+The paper is available at <https://×××.com>.
+
+&emsp;&emsp;If you find the work of this paper helpful, consider quoting it (bibtex).  
+&emsp;&emsp;This paper aims to provide a secure Numpy matrix version of P-CNN for the mature large CNN network model (e.g., vgg-16). Experiments show that P-CNN can securely and correctly implement the task of binary classification, and the error can be controlled within 1e-4.
+&emsp;&emsp;If you want to reproduce the work of this paper, please read <https://github.com/CAVLab-tech/P-CNN-for-CAV>.
 
 &emsp;&emsp;总结地，包含下述内容：  
 &emsp;&emsp;[1. caffe环境配置](#1)  
