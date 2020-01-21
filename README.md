@@ -5,16 +5,16 @@ The paper is available at <https://×××.com>.
 
 &emsp;&emsp;If you find the work of this paper helpful, consider quoting it (bibtex).  
 &emsp;&emsp;This paper aims to provide a secure Numpy matrix version of P-CNN for the mature large CNN network model (e.g., vgg-16). Experiments show that P-CNN can securely and correctly implement the task of binary classification, and the error can be controlled within 1e-4.
-&emsp;&emsp;If you want to reproduce the work of this paper, please read <https://github.com/CAVLab-tech/P-CNN-for-CAV>.
+&emsp;&emsp;If you want to reproduce the work of this paper, please read the code in <https://github.com/CAVLab-tech/P-CNN-for-CAV>.
 
-&emsp;&emsp;总结地，包含下述内容：  
-&emsp;&emsp;[1. caffe环境配置](#1)  
-&emsp;&emsp;[2. 软件配置](#2)  
-&emsp;&emsp;[3. 真实数据集](#3)  
-&emsp;&emsp;[4. 代码文件功能分布](#4)  
-&emsp;&emsp;[5. 训练网络参数](#5)  
-&emsp;&emsp;[6. 测试示例](#6)  
-&emsp;&emsp;[7. 安全函数介绍](#7)  
+&emsp;&emsp;In summary, the code includes the following:  
+&emsp;&emsp;[1. Caffe environment configuration](#1)  
+&emsp;&emsp;[2. Software configuration](#2)  
+&emsp;&emsp;[3. Real dataset](#3)  
+&emsp;&emsp;[4. Code file function distribution](#4)  
+&emsp;&emsp;[5. Training network parameters](#5)  
+&emsp;&emsp;[6. Test demo](#6)  
+&emsp;&emsp;[7. Introduction of secure function](#7)  
 
 
 ### <a id="1">1.环境配置</a>
