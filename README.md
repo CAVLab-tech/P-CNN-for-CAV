@@ -166,46 +166,46 @@ cd caffe-master/src/caffe/layers
 #### python files.
 * feature1_1.py to feature36_2.py are the sub-functions that call the corresponding configuration files, and provide normal function of   each layer in VGG16.
 * layer.py contains the ReLU function and the Max-pool function.
-* smc_function.py 包含本文设计的各类安全函数SecBitMul、SecBitAdd、SecBitExtra和SecMaxIndex；  
-* image_cipher负责生成两张密文图片；  
-* read_npy负责读取一些npy类型文件；  
-* read_model负责读取test.caffemodel参数文件中部分参数。
+* smc_function_number.py is the number vision of secure function proposed in this work.    
+* smc_function_matrix.py is the Numpy matrix vision of secure function proposed in this work. 
+* read_npy is used to read the .npy type files.  
+* read_model is used to read the parameter in .caffemodel type files.
 
-#### npy类型文件
-&emsp;&emsp;主要是一些在测试图片rgb_data/testing/3.png时获取的各个网络层的特征值矩阵。
+#### .npy files.
+&emsp;&emsp; Numpy matrix data, e.g., network parameter.
 
 ### <a id="5">5. Training network parameters</a>
-&emsp;&emsp;运行run_zmf.zmf脚本；  
-&emsp;&emsp;调用solver.prototxt，供设置各种训练参数，其中VGGnet.caffemodel 为VGG-16网络预训练模型文件，可在:<https://github.com/BVLC/caffe/wiki/Model-Zoomodels-used-by-the-vgg-team-in-ilsvrc-2014>; 处下载（注意，如果您想在CPU模式下进行训练，需要将solver_mode选项改成CPU）；  
-&emsp;&emsp;在VGG-16网络配置train_val.prototxt中，我们制作数据集标签文件供训练和验证使用；重要地，我们只训练最后一层全连接层的参数，而不更改其他网络层参数，将其权重和偏置的步长置0；  
+&emsp;&emsp; operate run_zmf.zmf script.  
+&emsp;&emsp; solver.prototxt is used to set training parameters.
+&emsp;&emsp; VGGnet.caffemodel is pre-training model file in VGG16 network.download link: <https://github.com/BVLC/caffe/wiki/Model-Zoomodels-used-by-the-vgg-team-in-ilsvrc-2014>; 
+&emsp;&emsp; Note that: If you want to train in CPU mode, you need to change the solver_mode option to CPU.
+&emsp;&emsp; In train_val.prototxt, we make the dataset label file for training and verification.
+&emsp;&emsp; Specially, we only train the parameters of the last full-connected layer without changing the parameters of the other network layers, setting the offset of weight and bias to 0.
 ```javascript
   param {
     lr_mult: 0
     decay_mult: 0}
 ```
-&emsp;&emsp;注意：如果您更改新的数据集进行训练，若测试效果不理想，可以考虑解放更多的网络层，或者微调训练参数。
+&emsp;&emsp; Note that: if you change a new dataset for training, consider freeing up more network layers or fine-tuning training parameters if the test results are not ideal.
 
 ### <a id="6">6. Test demo</a>
-&emsp;&emsp;运行feature.py  
-&emsp;&emsp;测试示例为rgb_data/testing/3.png  
+&emsp;&emsp; Run feature.py.  
+&emsp;&emsp; Test sample: data/testing/3.png.  
 ```javascript
-# 正确更改caffe路径
+# Modify Caffe path correctly, please.
 caffe_root = '/home/hadoop/workspace/caffe-master'
 sys.path.append('/home/hadoop/workspace/caffe-master/python')
 ```
-&emsp;&emsp;注意：如果您想在CPU模式下进行测试，则需要将caffe.set_mode_gpu()更改为caffe.set_mode_cpu()；
-#### 主要包含下述过程：
-* 图片加密：读入图片、crop图片维度为224×224×3、像素矩阵转置为3×224×224、随机分割图片image为image1和image2；
-* 特征提取：依据VGG-16网络顺序调用各个网络层的功能函数，获得分割的特征分量score1和score2；  
-注意：依据和，我们对于第二个网络输出需要减去偏置bias，满足实验要求；
-* 图片解密：根据加法秘密共享性质，可获得测试示例的两个特征分数score_inter，较大分数对应的类标签记为示例测试输出。
+&emsp;&emsp; Note that: If you want to perform the test process in CPU mode, you need modify caffe.set_mode_gpu() as caffe.set_mode_cpu().
+
+#### Mainly includes the following process:
+* Image encryption: read image, crop the image size into 224×224×3, transpose the image matrix to 3×224×224, split randomly image to       image1 and image2 with the same dimension.
+* Feature extraction and classification: perform the secure functions proposed in this work according to the order of vgg-16 network,     and output the classification componets, i.e., score1 and score2.
+* Image decryption: According to the idea of addition secret sharing, two scores (i.e., score_inter) can be obtained by samply addition, and the class label corresponding to the larger score is denoted as final classification result.
 
 ### <a id="7">7. Introduction of secure function</a>
-#### smc_function.py
-* SecBitExtra提供符号位;
-* SecBitAdd提供进位加法功能;
-* SecBitMul为SecBitAdd提供进位；
-* SecMaxIndex提供最大值的二维索引。
-
-#### layer.py
-&emsp;&emsp;ReluALayer和ReluBLayer执行relu激活，调用SecBitExtra函数，若bit==1，则意味着像素值小于0，需要将各自像素分量置0;若bit==0，则意味着像素值不小于0，维持各自像素分量不改变。MaxALayer和MaxBLayer调用SecMaxIndex函数，每一个2×2像素矩阵作为输入，返回最大值索引，进而实现max-pool功能
+#### smc_function_matrix.py
+* SecBitExtra is used to provide symbol-bit matrix of input matrix;
+* SecBitAdd is used to realize the secure carry addition;
+* SecBitMul is used to provide carry for SecBitAdd;
+* SecMaxIndex is used to obtain the maximum location in pooling area.
